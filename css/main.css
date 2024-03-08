@@ -74,18 +74,16 @@ section#products{
   position: relative;
 }
 section#products .wrap {  
-  height: 100%;
+  height: 100vh;
   flex-direction: column-reverse;
 }
 section#products .wrap h2 {
-  
-  color: #0e9447;
-  font-weight: bold;
-  text-transform: uppercase;
+ 
 }
 section#products .wrap ul { 
   position: absolute;
   bottom: 30px;
+  z-index: 1;
 }
 section#products .wrap ul::before{
   content: "";
@@ -94,6 +92,7 @@ section#products .wrap ul::before{
   position: absolute;
   top: 6px;
   left: 60px;
+  z-index: 1;
 }
 section#products .wrap ul li {  
   max-width: 120px;
@@ -131,6 +130,14 @@ section#products .wrap ul li.current a::before{
 }
 section#products .wrap div { 
   height: 100%;
+  width: 100%;
+}
+section#products slick-list{
+  height: 100%;
+}
+section#products .slick-list .slick-track{
+  height: 100%;
+  width: 100%;
 }
 section#products .wrap div article {  
   height: 100%;
@@ -140,6 +147,12 @@ section#products .wrap div article {
 }
 section#products .wrap div article:not(:first-child){
   
+}
+section#products .wrap div article h2{
+  color: #0e9447;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 30px;
 }
 section#products .wrap div article h3 {  
   font-weight: bold;
@@ -151,7 +164,7 @@ section#products .wrap div article figure{
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -2;
 }
 section#products .wrap div article figure img{  
   width: 100%;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pf3-hbpaper</title>
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
     <!-- //구글폰트 -->
@@ -79,7 +80,7 @@
                 arrows:true,
                 fade: true
             });
-            $('.proAni').slick({
+            $('//.proAni').slick({
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -90,6 +91,54 @@
                 fade: true
             });
         });
+    </script>
+
+    <!-- 마우스 휠 -->
+    <script type="text/javascript">
+        window.onload = function () {
+            var elm = ".box";
+            $(elm).each(function (index) {
+                // 개별적으로 Wheel 이벤트 적용
+                $(this).on("mousewheel DOMMouseScroll", function (e) {
+                    e.preventDefault();
+                    var delta = 0;
+                    if (!event) event = window.event;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta / 120;
+                        if (window.opera) delta = -delta;
+                    } 
+                    else if (event.detail)
+                        delta = -event.detail / 3;
+                    var moveTop = $(window).scrollTop();
+                    var elmSelecter = $(elm).eq(index);
+                    // 마우스휠을 위에서 아래로
+                    if (delta < 0) {
+                        if ($(elmSelecter).next() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).next().offset().top;
+                            }catch(e){}
+                        }
+                    // 마우스휠을 아래에서 위로
+                    } else {
+                        if ($(elmSelecter).prev() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).prev().offset().top;
+                            }catch(e){}
+                        }
+                    }
+                     
+                    // 화면 이동 0.8초(800)
+                    $("html,body").stop().animate({
+                        scrollTop: moveTop + 'px'
+                    }, {
+                        duration: 800, complete: function () {
+                        }
+                    });
+                });
+            });
+            $("main>section").unwrap();
+            $("section:not(:#footer)").css("height","100%");
+        }
     </script>
 </head>
 <body>
@@ -207,7 +256,7 @@
         <!-- products -->
         <section id="products" class="vh100">
             <div class="wrap flex column between">
-                <h2 class="h5">products</h2>
+                <h2 class="h5 hide">products</h2>
                 <ul class="flex">
                     <li class=" current"><a href="" class="block">종이 봉투</a></li>
                     <li><a href="" class="block">종이 쇼핑백</a></li>
@@ -220,6 +269,7 @@
                 <div>
                     <div class="proAni">
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 봉투</h3>
                             <figure>
                                 <img src="img/paper_01.jpg" alt="">
@@ -233,6 +283,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 쇼핑백</h3>
                             <figure>
                                 <img src="img/paper_02.jpg" alt="">
@@ -246,6 +297,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 안전 봉투</h3>
                             <figure>
                                 <img src="img/paper_03.jpg" alt="">
@@ -259,6 +311,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 식품 용기</h3>
                             <figure>
                                 <img src="img/paper_04.jpg" alt="">
@@ -272,6 +325,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 테이프</h3>
                             <figure>
                                 <img src="img/paper_05.jpg" alt="">
@@ -285,6 +339,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">종이 완충제</h3>
                             <figure>
                                 <img src="img/paper_06.jpg" alt="">
@@ -299,6 +354,7 @@
                             <a href="" class="block">MORE VIEW</a>
                         </article>
                         <article>
+                            <h2 class="h5">products</h2>
                             <h3 class="h2">특수지</h3>
                             <figure>
                                 <img src="img/paper_07.jpg" alt="">
